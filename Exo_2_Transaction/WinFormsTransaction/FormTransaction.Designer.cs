@@ -67,9 +67,9 @@
             labelMontant.AutoSize = true;
             labelMontant.Location = new Point(38, 175);
             labelMontant.Name = "labelMontant";
-            labelMontant.Size = new Size(53, 15);
+            labelMontant.Size = new Size(78, 15);
             labelMontant.TabIndex = 2;
-            labelMontant.Text = "Montant";
+            labelMontant.Text = "Montant en €";
             // 
             // labelCodePostal
             // 
@@ -100,6 +100,7 @@
             // 
             textBoxMontant.Location = new Point(147, 172);
             textBoxMontant.Name = "textBoxMontant";
+            textBoxMontant.PlaceholderText = "Ex:35.50";
             textBoxMontant.Size = new Size(122, 23);
             textBoxMontant.TabIndex = 6;
             textBoxMontant.Leave += textBoxMontant_Leave;
@@ -166,6 +167,7 @@
             Name = "FormTransaction";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Transaction";
+            FormClosing += transaction_FormClosing;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
