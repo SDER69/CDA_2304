@@ -13,7 +13,8 @@ namespace WinFormsTransaction
     {
         public static Boolean VerifNom(string nom)
         {
-            Regex controleNom = new Regex(@"^[A-Z]([a-z])+(-[A-Z]([a-z])+)*$");
+            //Regex controleNom = new Regex(@"^[A-Z]([a-z])+(-[A-Z]([a-z])+)*$");// regex qui accepte les tirets dans les noms composés
+            Regex controleNom = new Regex(@"^[A-Z]([a-z])+(\-[A-Z]([a-z])+|\s[A-Z]([a-z])+)*$");// regex qui accepte les tirets et les espaces dans les noms composés
             return controleNom.IsMatch(nom);
         }
 
@@ -49,19 +50,20 @@ namespace WinFormsTransaction
 
         public static Boolean VerifMontant(string montant)
         {
-            Regex controleMontant = new Regex(@"^[0-9]+(\.[0-9]{2})?$");
+            //Regex controleMontant = new Regex(@"^[0-9]+(\.[0-9]{2})?$");//regex acceptant uniquement les points
+            Regex controleMontant = new Regex(@"^[0-9]+(\.[0-9]{2})+|(\,[0-9]{2})$");//regex acceptant les points et le virgules
             return controleMontant.IsMatch(montant);
-           
+
         }
 
         public static Boolean VerifCodePostal(string codePostal)
         {
             Regex controleCodePostal = new Regex("^[0-9]{5}$");
             return controleCodePostal.IsMatch(codePostal);
-
         }
 
 
+    
     }
 }
 
