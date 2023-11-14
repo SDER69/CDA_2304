@@ -1,4 +1,6 @@
+using CL_VerifTransaction;
 using System.Runtime.CompilerServices;
+using CL_Transaction;
 using System.Windows.Forms;
 
 namespace WinFormsTransaction
@@ -6,16 +8,27 @@ namespace WinFormsTransaction
     public partial class FormTransaction : Form
     {
         //declaration transaction
+        Transaction transaction;
 
+        // Getter et setter
+        public Transaction Transaction { get => transaction; private set => transaction = value; }
+
+        // Constructeurs
         public FormTransaction()
         {
             InitializeComponent();
+            this.transaction = null;
         }
 
-        //public FormTransaction()
-        //{
-        //    InitializeComponent();
-        //}
+        public FormTransaction(Transaction _transaction)
+        {
+            InitializeComponent();
+            this.transaction = _transaction;
+            this.textBoxNom.Text = _transaction.Nom;
+            this.textBoxDate.Text = _transaction.Date.ToShortDateString();
+            this.textBoxMontant.Text = _transaction.Montant.ToString();
+            this.textBoxCodePostal.Text = _transaction.CodePostal.ToString();
+        }
 
         private void textBoxNom_Leave(object sender, EventArgs e)
         {
@@ -24,12 +37,12 @@ namespace WinFormsTransaction
 
             if (box != null)
             {
-                if (!CL_VerifTransaction.VerifNom(box.Text))
+                if (!VerifTransaction.VerifNom(box.Text))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir un nom valide");
                 }
 
-                else if(box.Text.Length > 30)
+                else if (box.Text.Length > 30)
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir un nom de 30 caractères maximum");
                 }
@@ -45,12 +58,12 @@ namespace WinFormsTransaction
             TextBox box = sender as TextBox;
             if (box != null)
             {
-                if (!CL_VerifTransaction.VerifDateFormat(box.Text))
+                if (!VerifTransaction.VerifDateFormat(box.Text))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir une date valide");
                 }
 
-                else if (!CL_VerifTransaction.VerifDateSuperieure(box.Text))
+                else if (!VerifTransaction.VerifDateSuperieure(box.Text))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir une date supérieure à la date du jour");
                 }
@@ -62,13 +75,12 @@ namespace WinFormsTransaction
             }
         }
 
-
         private void textBoxMontant_Leave(object sender, EventArgs e)
         {
             TextBox box = (TextBox)sender;
             if (box != null)
             {
-                if (!CL_VerifTransaction.VerifMontant(box.Text))
+                if (!VerifTransaction.VerifMontant(box.Text))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir un montant valide");
                 }
@@ -86,9 +98,7 @@ namespace WinFormsTransaction
             TextBox box = (TextBox)sender;
             if (box != null)
             {
-
-
-                if (!CL_VerifTransaction.VerifCodePostal(box.Text))
+                if (!VerifTransaction.VerifCodePostal(box.Text))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir un code postal valide");
                 }
@@ -102,32 +112,28 @@ namespace WinFormsTransaction
         private void btnValider_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-           
+
             if (btn != null)
             {
                 if (this.textBoxNom.Text.Length == 0
                     || (this.textBoxDate.Text.Length == 0)
                     || (this.textBoxMontant.Text.Length == 0)
                     || (this.textBoxCodePostal.Text.Length == 0))
-                 {
-                    MessageBox.Show("Le champ est obligatoire");
-                 }
-
-                /*else if (this.textBoxNom.Text.Length == 0 && this.textBoxDate.Text.Length == 0 && this.textBoxMontant.Text.Length == 0 && this.textBoxCodePostal.Text.Length == 0)
                 {
-                    this.errorProvider1.SetError(this.textBoxNom, "Champ obligatoire");
-                    this.errorProvider1.SetError(this.textBoxDate, "Champ obligatoire");
-                    this.errorProvider1.SetError(this.textBoxMontant, "Champ obligatoire");
-                    this.errorProvider1.SetError(this.textBoxCodePostal, "Champ obligatoire");
-                    MessageBox.Show("Tous les champs sont obligatoires");
-                }*/
-               
+                    MessageBox.Show("Le champ est obligatoire");
+                }
+
                 else
                 {
-                    string message = this.labelNom.Text + " : " + this.textBoxNom.Text + "\n"
-                                     + this.labelDate.Text + " : " + this.textBoxDate.Text + "\n"
-                                     + this.labelMontant.Text + " : " + this.textBoxMontant.Text + "\n"
-                                     + this.labelCodePostal.Text + " : " + this.textBoxCodePostal.Text;
+                   
+                        this.transaction = new Transaction(
+                        this.textBoxNom.Text,
+                        Convert.ToDateTime(this.textBoxDate.Text),
+                        Convert.ToDouble(this.textBoxMontant.Text),
+                        Convert.ToInt32(this.textBoxCodePostal.Text)
+                        );
+
+                    string message = this.transaction.ToString();
                     const string caption = "Validation effectuée";
                     var result = MessageBox.Show(message, caption,
                                                  MessageBoxButtons.OK,
@@ -136,6 +142,7 @@ namespace WinFormsTransaction
                     if (result == DialogResult.OK)
                     {
                         Effacer();
+
                     }
                 }
 
@@ -172,12 +179,6 @@ namespace WinFormsTransaction
             {
                 e.Cancel = true;
             }
-            else
-            {
-                e.Cancel = false;
-                MessageBox.Show("Au revoir");
-            }
-
         }
     }
 }

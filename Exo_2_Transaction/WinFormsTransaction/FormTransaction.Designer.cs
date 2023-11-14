@@ -111,7 +111,6 @@
             textBoxCodePostal.Name = "textBoxCodePostal";
             textBoxCodePostal.Size = new Size(122, 23);
             textBoxCodePostal.TabIndex = 7;
-            textBoxCodePostal.TextChanged += textBoxNom_Leave;
             textBoxCodePostal.Leave += textBoxCodePostal_Leave;
             // 
             // labelFormatDate
@@ -125,7 +124,9 @@
             // 
             // btnValider
             // 
-            btnValider.Location = new Point(422, 247);
+            btnValider.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnValider.DialogResult = DialogResult.OK;
+            btnValider.Location = new Point(316, 216);
             btnValider.Name = "btnValider";
             btnValider.Size = new Size(75, 23);
             btnValider.TabIndex = 9;
@@ -135,7 +136,8 @@
             // 
             // btnEffacer
             // 
-            btnEffacer.Location = new Point(422, 276);
+            btnEffacer.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEffacer.Location = new Point(316, 245);
             btnEffacer.Name = "btnEffacer";
             btnEffacer.Size = new Size(75, 23);
             btnEffacer.TabIndex = 10;
@@ -151,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(426, 331);
             Controls.Add(btnEffacer);
             Controls.Add(btnValider);
             Controls.Add(labelFormatDate);

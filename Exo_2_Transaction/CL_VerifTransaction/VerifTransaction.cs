@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace WinFormsTransaction
+namespace CL_VerifTransaction
 {
-    static class CL_VerifTransaction
+    static public class VerifTransaction
     {
         public static Boolean VerifNom(string nom)
         {
@@ -63,14 +63,14 @@ namespace WinFormsTransaction
             return controleCodePostal.IsMatch(codePostal);
         }
 
-       
 
 
-    
 
-        
-    
+
+
+
+
     }
 }
 
-   
+
