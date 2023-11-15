@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -9,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CL_Serialisation\CL_Serialisation.csproj" />
     <ProjectReference Include="..\CL_Transaction\CL_Transaction.csproj" />
-    <ProjectReference Include="..\CL_VerifTransaction\CL_VerifTransaction.csproj" />
   </ItemGroup>
 
 </Project>

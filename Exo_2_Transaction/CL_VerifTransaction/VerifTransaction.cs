@@ -48,13 +48,20 @@ namespace CL_VerifTransaction
             return valideDateGlobale;
         }
 
-        public static Boolean VerifMontant(string montant)
+        public static Boolean VerifMontant(string montant,out double montantConverti)
         {
+            montantConverti = 0;
             //Regex controleMontant = new Regex(@"^[0-9]+(\.[0-9]{2})?$");//regex acceptant uniquement les points
-            Regex controleMontant = new Regex(@"^[0-9]+((\.[0-9]{2})|(\,[0-9]{2}))$");//regex acceptant les points et le virgules
+            Regex controleMontant = new Regex(@"^[0-9]+(((\.[0-9]{2})|(\,[0-9]{2})))*$");//regex acceptant les points et le virgules
             // "^[0-9]+((\,|\.)[0-9]{2})?$"
-            return controleMontant.IsMatch(montant);
-
+            Boolean ok= controleMontant.IsMatch(montant);
+            if (ok)
+            {             
+                montant=montant.Replace('.',char.Parse(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator));
+                montant=montant.Replace(',', char.Parse(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator));
+                montantConverti = Double.Parse(montant);
+            }
+            return ok;
         }
 
         public static Boolean VerifCodePostal(string codePostal)

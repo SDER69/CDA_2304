@@ -1,5 +1,8 @@
 ﻿namespace CL_Transaction
+
+
 {
+    [Serializable]
     public class Transaction
     {
              // Attributs
@@ -35,10 +38,9 @@
            
             public override string ToString()
             {
-                return "------------------------------------------ \n\r" +
-                       "Nom : " + this.nom + "\n\r" +
-                       "Date : " + this.date + "\n\r" +
-                       "Montant : " + this.montant + "\n\r" +
+                return "Nom : " + this.nom + "\n\r" +
+                       "Date : " + this.date.ToShortDateString() + "\n\r" +
+                       "Montant : " + String.Format("{0:0.00}",this.montant) + "\n\r" +
                        "Code postal : " + this.codePostal;
             }
 

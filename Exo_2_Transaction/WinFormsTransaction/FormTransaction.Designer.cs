@@ -100,7 +100,6 @@
             // 
             textBoxMontant.Location = new Point(147, 172);
             textBoxMontant.Name = "textBoxMontant";
-            textBoxMontant.PlaceholderText = "Ex:35.50";
             textBoxMontant.Size = new Size(122, 23);
             textBoxMontant.TabIndex = 6;
             textBoxMontant.Leave += textBoxMontant_Leave;
@@ -125,7 +124,6 @@
             // btnValider
             // 
             btnValider.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnValider.DialogResult = DialogResult.OK;
             btnValider.Location = new Point(316, 216);
             btnValider.Name = "btnValider";
             btnValider.Size = new Size(75, 23);

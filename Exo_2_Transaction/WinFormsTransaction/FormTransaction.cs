@@ -2,6 +2,7 @@ using CL_VerifTransaction;
 using System.Runtime.CompilerServices;
 using CL_Transaction;
 using System.Windows.Forms;
+using System;
 
 namespace WinFormsTransaction
 {
@@ -26,7 +27,7 @@ namespace WinFormsTransaction
             this.transaction = _transaction;
             this.textBoxNom.Text = _transaction.Nom;
             this.textBoxDate.Text = _transaction.Date.ToShortDateString();
-            this.textBoxMontant.Text = _transaction.Montant.ToString();
+            this.textBoxMontant.Text = /*_transaction.Montant.ToString();*/  String.Format("{0:0.00}", _transaction.Montant);
             this.textBoxCodePostal.Text = _transaction.CodePostal.ToString();
         }
 
@@ -80,7 +81,8 @@ namespace WinFormsTransaction
             TextBox box = (TextBox)sender;
             if (box != null)
             {
-                if (!VerifTransaction.VerifMontant(box.Text))
+                double montantInutile;
+                if (!VerifTransaction.VerifMontant(box.Text, out montantInutile))
                 {
                     this.errorProvider1.SetError(box, "Veuillez saisir un montant valide");
                 }
@@ -112,26 +114,35 @@ namespace WinFormsTransaction
         private void btnValider_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            double montantUtile = 0;
 
             if (btn != null)
             {
                 if (this.textBoxNom.Text.Length == 0
+                    || !VerifTransaction.VerifNom(this.textBoxNom.Text)
                     || (this.textBoxDate.Text.Length == 0)
+                    || !VerifTransaction.VerifDateFormat(this.textBoxDate.Text)
+                    || !VerifTransaction.VerifDateSuperieure(this.textBoxDate.Text)
                     || (this.textBoxMontant.Text.Length == 0)
-                    || (this.textBoxCodePostal.Text.Length == 0))
+                    || !VerifTransaction.VerifMontant(this.textBoxMontant.Text, out montantUtile)
+                    || (this.textBoxCodePostal.Text.Length == 0)
+                    || !VerifTransaction.VerifCodePostal(this.textBoxCodePostal.Text)
+                    )
                 {
                     MessageBox.Show("Le champ est obligatoire");
                 }
 
                 else
                 {
-                   
-                        this.transaction = new Transaction(
-                        this.textBoxNom.Text,
-                        Convert.ToDateTime(this.textBoxDate.Text),
-                        Convert.ToDouble(this.textBoxMontant.Text),
-                        Convert.ToInt32(this.textBoxCodePostal.Text)
-                        );
+
+                    this.transaction = new Transaction(
+                    this.textBoxNom.Text,
+                    Convert.ToDateTime(this.textBoxDate.Text),
+                    montantUtile,
+                    Convert.ToInt32(this.textBoxCodePostal.Text)
+                    );
+
+                    this.DialogResult = DialogResult.OK;
 
                     string message = this.transaction.ToString();
                     const string caption = "Validation effectuée";
