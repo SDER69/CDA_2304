@@ -28,9 +28,15 @@ namespace WinFormsTransaction
             {
                 listTransactions.Add(creationFormulaire.Transaction);
 
-                Serialisation.Serialiser(listTransactions[0]);
-                Transaction t= Serialisation.Deserialiser();
-                listTransactions.Add(t);
+                // Serialisation binaire
+                /*SerialisationBinaire.Serialiser(listTransactions[0]);
+                Transaction t1 = SerialisationBinaire.Deserialiser();
+                listTransactions.Add(t1);*/
+
+                //Serialisation json
+                SerialisationJson.Serialiser(listTransactions[0]);
+                Transaction? t2 = SerialisationJson.Deserialiser();
+                listTransactions.Add(t2);
                 /*FileStream fs = new FileStream("data.dat", FileMode.Create);
                 
                 BinaryFormatter formatter = new BinaryFormatter();
@@ -41,7 +47,7 @@ namespace WinFormsTransaction
                 FileStream _fs = new FileStream("data.dat", FileMode.Open);
                 listTransactions = (List<Transaction>)formatter.Deserialize(_fs);
                 */
-                FormTransaction editionFormulaire = new FormTransaction(t);
+                FormTransaction editionFormulaire = new FormTransaction(t2);
                 Application.Run(editionFormulaire);
             }
 
@@ -63,9 +69,5 @@ namespace WinFormsTransaction
             Application.Run(new FormTransaction());*/
         }
 
-        private static void Serialiser(List<Transaction> listTransactions)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
