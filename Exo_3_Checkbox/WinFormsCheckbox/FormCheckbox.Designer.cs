@@ -253,9 +253,8 @@
             labelCopieTexte.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             labelCopieTexte.Location = new Point(29, 128);
             labelCopieTexte.Name = "labelCopieTexte";
-            labelCopieTexte.Size = new Size(16, 24);
+            labelCopieTexte.Size = new Size(0, 24);
             labelCopieTexte.TabIndex = 7;
-            labelCopieTexte.Text = "f";
             // 
             // FormCheckBox
             // 

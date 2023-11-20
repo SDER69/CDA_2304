@@ -18,10 +18,24 @@ namespace WinFormsCheckbox
             TextBox box = this.textBoxsaisie;
 
             this.labelCopieTexte.Text = box.Text;
+            //this.groupBoxChoix.Enabled = false;
 
             if (box.Text != "")
             {
                 this.groupBoxChoix.Enabled = true;
+
+                if (this.radioButtonMajsucules.Checked)
+                {
+                    this.labelCopieTexte.Text = this.labelCopieTexte.Text.ToUpper();
+                }
+                else if (this.radioButtonMinuscules.Checked)
+                {
+                    this.labelCopieTexte.Text = this.labelCopieTexte.Text.ToLower();
+                }
+                else
+                {
+                    this.labelCopieTexte.Text = box.Text;
+                }
             }
             else
             {
@@ -30,6 +44,8 @@ namespace WinFormsCheckbox
                 this.checkBoxCar.Checked = false;
                 this.checkBoxCasse.Checked = false;
             }
+
+
         }
 
         private void checkBoxFond_CheckedChanged(object sender, EventArgs e)
@@ -41,9 +57,12 @@ namespace WinFormsCheckbox
             }
             else
             {
-                FormatTexte();
-
+                this.radioButtonRed1.Checked = false;
+                this.radioButtonGreen.Checked = false;
+                this.radioButtonBlue.Checked = false;
+                this.labelCopieTexte.BackColor = SystemColors.Control;
             }
+
 
         }
 
@@ -54,6 +73,13 @@ namespace WinFormsCheckbox
             {
                 this.groupBoxCaracteres.Visible = true;
             }
+            else
+            {
+                this.radioButtonRed2.Checked = false;
+                this.radioButtonWhite.Checked = false;
+                this.radioButtonBlack.Checked = false;
+                this.labelCopieTexte.ForeColor = SystemColors.ControlText;
+            }
         }
 
         private void checkBoxCasse_CheckedChanged(object sender, EventArgs e)
@@ -62,6 +88,12 @@ namespace WinFormsCheckbox
             if (this.checkBoxCasse.Checked)
             {
                 this.groupBoxCasse.Visible = true;
+            }
+            else
+            {
+                this.radioButtonMinuscules.Checked = false;
+                this.radioButtonMajsucules.Checked = false;
+                this.labelCopieTexte.Text = this.textBoxsaisie.Text;
             }
         }
 
@@ -143,7 +175,7 @@ namespace WinFormsCheckbox
             if (this.radioButtonMinuscules.Checked)
             {
                 this.labelCopieTexte.Text = this.labelCopieTexte.Text.ToLower();
-            }       
+            }
         }
 
         private void radioButtonMajsucules_CheckedChanged(object sender, EventArgs e)
@@ -154,12 +186,6 @@ namespace WinFormsCheckbox
             }
         }
 
-        private void FormatTexte()
-        {
-            if(!this.checkBoxFond.Checked)
-            {
-               this.labelCopieTexte.Text = this.textBoxsaisie.Text;
-            }
-        }
+
     }
 }
