@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             LabelNewElement = new Label();
             textBoxAddNewElement = new TextBox();
             buttonAddNewElement = new Button();
@@ -44,6 +45,10 @@
             labelText = new Label();
             textBoxText = new TextBox();
             listBoxDisplayList = new ListBox();
+            errorProviderNegativeNumber = new ErrorProvider(components);
+            errorProviderCheckString = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProviderNegativeNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckString).BeginInit();
             SuspendLayout();
             // 
             // LabelNewElement
@@ -95,10 +100,11 @@
             // 
             // textBoxIndexElement
             // 
-            textBoxIndexElement.Location = new Point(441, 61);
+            textBoxIndexElement.Location = new Point(444, 61);
             textBoxIndexElement.Name = "textBoxIndexElement";
             textBoxIndexElement.Size = new Size(66, 23);
             textBoxIndexElement.TabIndex = 6;
+            textBoxIndexElement.TextChanged += textBoxIndexElement_TextChanged;
             // 
             // buttonSelectIndex
             // 
@@ -108,6 +114,7 @@
             buttonSelectIndex.TabIndex = 7;
             buttonSelectIndex.Text = "Sélectionner";
             buttonSelectIndex.UseVisualStyleBackColor = true;
+            buttonSelectIndex.Click += buttonSelectIndex_Click;
             // 
             // buttonEmptyList
             // 
@@ -117,6 +124,7 @@
             buttonEmptyList.TabIndex = 8;
             buttonEmptyList.Text = "Vider la liste";
             buttonEmptyList.UseVisualStyleBackColor = true;
+            buttonEmptyList.Click += buttonEmptyList_Click;
             // 
             // labelProperties
             // 
@@ -173,7 +181,7 @@
             // 
             textBoxText.Location = new Point(582, 277);
             textBoxText.Name = "textBoxText";
-            textBoxText.Size = new Size(42, 23);
+            textBoxText.Size = new Size(177, 23);
             textBoxText.TabIndex = 15;
             // 
             // listBoxDisplayList
@@ -185,6 +193,14 @@
             listBoxDisplayList.Size = new Size(195, 214);
             listBoxDisplayList.TabIndex = 16;
             listBoxDisplayList.SelectedIndexChanged += listBoxDisplayList_SelectedIndexChanged;
+            // 
+            // errorProviderNegativeNumber
+            // 
+            errorProviderNegativeNumber.ContainerControl = this;
+            // 
+            // errorProviderCheckString
+            // 
+            errorProviderCheckString.ContainerControl = this;
             // 
             // FormLists
             // 
@@ -211,6 +227,8 @@
             Name = "FormLists";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Les listes et leurs propriétés";
+            ((System.ComponentModel.ISupportInitialize)errorProviderNegativeNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckString).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,5 +251,7 @@
         private Label labelText;
         private TextBox textBoxText;
         private ListBox listBoxDisplayList;
+        private ErrorProvider errorProviderNegativeNumber;
+        private ErrorProvider errorProviderCheckString;
     }
 }
