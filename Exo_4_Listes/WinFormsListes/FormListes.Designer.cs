@@ -45,10 +45,14 @@
             labelText = new Label();
             textBoxText = new TextBox();
             listBoxDisplayList = new ListBox();
-            errorProviderNegativeNumber = new ErrorProvider(components);
-            errorProviderCheckString = new ErrorProvider(components);
-            ((System.ComponentModel.ISupportInitialize)errorProviderNegativeNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorProviderCheckString).BeginInit();
+            errorProviderValidNumber = new ErrorProvider(components);
+            errorProviderCheckListLength = new ErrorProvider(components);
+            errorProviderCheckFirstName = new ErrorProvider(components);
+            errorProviderDuplicateFirstName = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProviderValidNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckListLength).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckFirstName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDuplicateFirstName).BeginInit();
             SuspendLayout();
             // 
             // LabelNewElement
@@ -104,7 +108,6 @@
             textBoxIndexElement.Name = "textBoxIndexElement";
             textBoxIndexElement.Size = new Size(66, 23);
             textBoxIndexElement.TabIndex = 6;
-            textBoxIndexElement.TextChanged += textBoxIndexElement_TextChanged;
             // 
             // buttonSelectIndex
             // 
@@ -149,6 +152,7 @@
             // 
             textBoxItemsCount.Location = new Point(582, 194);
             textBoxItemsCount.Name = "textBoxItemsCount";
+            textBoxItemsCount.ReadOnly = true;
             textBoxItemsCount.Size = new Size(42, 23);
             textBoxItemsCount.TabIndex = 11;
             // 
@@ -165,6 +169,7 @@
             // 
             textBoxSelectedIndex.Location = new Point(582, 238);
             textBoxSelectedIndex.Name = "textBoxSelectedIndex";
+            textBoxSelectedIndex.ReadOnly = true;
             textBoxSelectedIndex.Size = new Size(42, 23);
             textBoxSelectedIndex.TabIndex = 13;
             // 
@@ -181,6 +186,7 @@
             // 
             textBoxText.Location = new Point(582, 277);
             textBoxText.Name = "textBoxText";
+            textBoxText.ReadOnly = true;
             textBoxText.Size = new Size(177, 23);
             textBoxText.TabIndex = 15;
             // 
@@ -194,13 +200,21 @@
             listBoxDisplayList.TabIndex = 16;
             listBoxDisplayList.SelectedIndexChanged += listBoxDisplayList_SelectedIndexChanged;
             // 
-            // errorProviderNegativeNumber
+            // errorProviderValidNumber
             // 
-            errorProviderNegativeNumber.ContainerControl = this;
+            errorProviderValidNumber.ContainerControl = this;
             // 
-            // errorProviderCheckString
+            // errorProviderCheckListLength
             // 
-            errorProviderCheckString.ContainerControl = this;
+            errorProviderCheckListLength.ContainerControl = this;
+            // 
+            // errorProviderCheckFirstName
+            // 
+            errorProviderCheckFirstName.ContainerControl = this;
+            // 
+            // errorProviderDuplicateFirstName
+            // 
+            errorProviderDuplicateFirstName.ContainerControl = this;
             // 
             // FormLists
             // 
@@ -227,8 +241,10 @@
             Name = "FormLists";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Les listes et leurs propriétés";
-            ((System.ComponentModel.ISupportInitialize)errorProviderNegativeNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorProviderCheckString).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderValidNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckListLength).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckFirstName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDuplicateFirstName).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,7 +267,9 @@
         private Label labelText;
         private TextBox textBoxText;
         private ListBox listBoxDisplayList;
-        private ErrorProvider errorProviderNegativeNumber;
-        private ErrorProvider errorProviderCheckString;
+        private ErrorProvider errorProviderValidNumber;
+        private ErrorProvider errorProviderCheckListLength;
+        private ErrorProvider errorProviderCheckFirstName;
+        private ErrorProvider errorProviderDuplicateFirstName;
     }
 }
