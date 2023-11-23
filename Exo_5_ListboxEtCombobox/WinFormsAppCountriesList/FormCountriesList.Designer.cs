@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCountriesList));
             labelSource = new Label();
             comboBoxCountriesList = new ComboBox();
             buttonAddAnItem = new Button();
@@ -52,11 +51,14 @@
             // 
             // comboBoxCountriesList
             // 
+            comboBoxCountriesList.AllowDrop = true;
             comboBoxCountriesList.FormattingEnabled = true;
             comboBoxCountriesList.Location = new Point(50, 58);
             comboBoxCountriesList.Name = "comboBoxCountriesList";
             comboBoxCountriesList.Size = new Size(121, 23);
-            comboBoxCountriesList.TabIndex = 1;
+            comboBoxCountriesList.TabIndex = 10;
+            comboBoxCountriesList.DropDown += comboBoxCountriesList_DropDown;
+            comboBoxCountriesList.TextChanged += comboBoxCountriesList_TextChanged;
             // 
             // buttonAddAnItem
             // 
@@ -66,15 +68,17 @@
             buttonAddAnItem.TabIndex = 2;
             buttonAddAnItem.Text = ">";
             buttonAddAnItem.UseVisualStyleBackColor = true;
+            buttonAddAnItem.Click += buttonAddAnItem_Click;
             // 
             // buttonAddAllItems
             // 
-            buttonAddAllItems.Image = (Image)resources.GetObject("buttonAddAllItems.Image");
             buttonAddAllItems.Location = new Point(224, 101);
             buttonAddAllItems.Name = "buttonAddAllItems";
-            buttonAddAllItems.Size = new Size(83, 34);
+            buttonAddAllItems.Size = new Size(83, 23);
             buttonAddAllItems.TabIndex = 3;
+            buttonAddAllItems.Text = ">>";
             buttonAddAllItems.UseVisualStyleBackColor = true;
+            buttonAddAllItems.Click += buttonAddAllItems_Click;
             // 
             // listBoxTarget
             // 
@@ -100,8 +104,9 @@
             buttonRemoveAnItem.Name = "buttonRemoveAnItem";
             buttonRemoveAnItem.Size = new Size(83, 23);
             buttonRemoveAnItem.TabIndex = 6;
-            buttonRemoveAnItem.Text = ">";
+            buttonRemoveAnItem.Text = "<";
             buttonRemoveAnItem.UseVisualStyleBackColor = true;
+            buttonRemoveAnItem.Click += buttonRemoveAnItem_Click;
             // 
             // buttonRemoveAllItems
             // 
@@ -109,25 +114,26 @@
             buttonRemoveAllItems.Name = "buttonRemoveAllItems";
             buttonRemoveAllItems.Size = new Size(83, 23);
             buttonRemoveAllItems.TabIndex = 7;
-            buttonRemoveAllItems.Text = ">";
+            buttonRemoveAllItems.Text = "<<";
             buttonRemoveAllItems.UseVisualStyleBackColor = true;
+            buttonRemoveAllItems.Click += buttonRemoveAllItems_Click;
             // 
             // buttonUpArrow
             // 
-            buttonUpArrow.Image = (Image)resources.GetObject("buttonUpArrow.Image");
             buttonUpArrow.Location = new Point(407, 247);
             buttonUpArrow.Name = "buttonUpArrow";
-            buttonUpArrow.Size = new Size(34, 77);
+            buttonUpArrow.Size = new Size(34, 50);
             buttonUpArrow.TabIndex = 8;
+            buttonUpArrow.Text = "↑";
             buttonUpArrow.UseVisualStyleBackColor = true;
             // 
             // buttonDownArrow
             // 
-            buttonDownArrow.Image = (Image)resources.GetObject("buttonDownArrow.Image");
-            buttonDownArrow.Location = new Point(472, 247);
+            buttonDownArrow.Location = new Point(458, 247);
             buttonDownArrow.Name = "buttonDownArrow";
-            buttonDownArrow.Size = new Size(34, 77);
+            buttonDownArrow.Size = new Size(34, 50);
             buttonDownArrow.TabIndex = 9;
+            buttonDownArrow.Text = "↓";
             buttonDownArrow.UseVisualStyleBackColor = true;
             // 
             // FormCountriesList
@@ -149,6 +155,7 @@
             Name = "FormCountriesList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Les listes";
+            Load += FormCountriesList_Load;
             ResumeLayout(false);
             PerformLayout();
         }

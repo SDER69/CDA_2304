@@ -194,9 +194,9 @@
             // 
             listBoxDisplayList.FormattingEnabled = true;
             listBoxDisplayList.ItemHeight = 15;
-            listBoxDisplayList.Location = new Point(43, 187);
+            listBoxDisplayList.Location = new Point(43, 194);
             listBoxDisplayList.Name = "listBoxDisplayList";
-            listBoxDisplayList.Size = new Size(195, 214);
+            listBoxDisplayList.Size = new Size(177, 214);
             listBoxDisplayList.TabIndex = 16;
             listBoxDisplayList.SelectedIndexChanged += listBoxDisplayList_SelectedIndexChanged;
             // 
