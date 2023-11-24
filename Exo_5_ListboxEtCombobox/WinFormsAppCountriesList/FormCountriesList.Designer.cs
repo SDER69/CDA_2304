@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             labelSource = new Label();
             comboBoxCountriesList = new ComboBox();
             buttonAddAnItem = new Button();
@@ -38,6 +39,10 @@
             buttonRemoveAllItems = new Button();
             buttonUpArrow = new Button();
             buttonDownArrow = new Button();
+            errorProviderCheckCountry = new ErrorProvider(components);
+            errorProviderDuplicateCountry = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckCountry).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDuplicateCountry).BeginInit();
             SuspendLayout();
             // 
             // labelSource
@@ -58,6 +63,7 @@
             comboBoxCountriesList.Size = new Size(121, 23);
             comboBoxCountriesList.TabIndex = 10;
             comboBoxCountriesList.DropDown += comboBoxCountriesList_DropDown;
+            comboBoxCountriesList.SelectedIndexChanged += comboBoxCountriesList_SelectedIndexChanged;
             comboBoxCountriesList.TextChanged += comboBoxCountriesList_TextChanged;
             // 
             // buttonAddAnItem
@@ -88,6 +94,7 @@
             listBoxTarget.Name = "listBoxTarget";
             listBoxTarget.Size = new Size(160, 169);
             listBoxTarget.TabIndex = 4;
+            listBoxTarget.SelectedIndexChanged += listBoxTarget_SelectedIndexChanged;
             // 
             // labelTarget
             // 
@@ -126,6 +133,7 @@
             buttonUpArrow.TabIndex = 8;
             buttonUpArrow.Text = "↑";
             buttonUpArrow.UseVisualStyleBackColor = true;
+            buttonUpArrow.Click += buttonUpArrow_Click;
             // 
             // buttonDownArrow
             // 
@@ -135,6 +143,15 @@
             buttonDownArrow.TabIndex = 9;
             buttonDownArrow.Text = "↓";
             buttonDownArrow.UseVisualStyleBackColor = true;
+            buttonDownArrow.Click += buttonDownArrow_Click;
+            // 
+            // errorProviderCheckCountry
+            // 
+            errorProviderCheckCountry.ContainerControl = this;
+            // 
+            // errorProviderDuplicateCountry
+            // 
+            errorProviderDuplicateCountry.ContainerControl = this;
             // 
             // FormCountriesList
             // 
@@ -156,6 +173,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Les listes";
             Load += FormCountriesList_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckCountry).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDuplicateCountry).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,5 +191,7 @@
         private Button buttonRemoveAllItems;
         private Button buttonUpArrow;
         private Button buttonDownArrow;
+        private ErrorProvider errorProviderCheckCountry;
+        private ErrorProvider errorProviderDuplicateCountry;
     }
 }
