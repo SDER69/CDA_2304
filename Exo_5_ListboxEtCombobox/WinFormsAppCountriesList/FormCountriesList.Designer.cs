@@ -172,6 +172,7 @@
             Name = "FormCountriesList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Les listes";
+            FormClosing += FormCountriesList_FormClosing;
             Load += FormCountriesList_Load;
             ((System.ComponentModel.ISupportInitialize)errorProviderCheckCountry).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProviderDuplicateCountry).EndInit();
