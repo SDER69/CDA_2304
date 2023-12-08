@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             labelName = new Label();
             textBoxName = new TextBox();
             labelBorrowedCapital = new Label();
@@ -41,13 +42,17 @@
             radioButtonRate9 = new RadioButton();
             radioButtonRate8 = new RadioButton();
             radioButtonRate7 = new RadioButton();
-            labelNumberOfRefunds = new Label();
-            DisplayAmount = new Panel();
+            labelNumberOfRefundsString = new Label();
             buttonValidate = new Button();
             buttonCancel = new Button();
-            label = new Label();
+            labeLNumberOfRefundsInt = new Label();
+            labelAmountDisplay = new Label();
+            errorProviderCheckBorrowedCapital = new ErrorProvider(components);
+            errorProviderNumberAboveMax = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)numericUpDownDurationInMonths).BeginInit();
             groupBoxInterestRate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckBorrowedCapital).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderNumberAboveMax).BeginInit();
             SuspendLayout();
             // 
             // labelName
@@ -65,6 +70,7 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(100, 23);
             textBoxName.TabIndex = 1;
+            textBoxName.Leave += textBoxName_Leave;
             // 
             // labelBorrowedCapital
             // 
@@ -81,6 +87,8 @@
             textBoxBorrowedCapital.Name = "textBoxBorrowedCapital";
             textBoxBorrowedCapital.Size = new Size(100, 23);
             textBoxBorrowedCapital.TabIndex = 3;
+            textBoxBorrowedCapital.TextChanged += textBoxBorrowedCapital_TextChanged;
+            textBoxBorrowedCapital.Leave += textBoxBorrowedCapital_Leave;
             // 
             // labelDurationInMonths
             // 
@@ -123,6 +131,7 @@
             comboBoxRepaymentFrequency.Name = "comboBoxRepaymentFrequency";
             comboBoxRepaymentFrequency.Size = new Size(100, 23);
             comboBoxRepaymentFrequency.TabIndex = 9;
+            comboBoxRepaymentFrequency.SelectedIndexChanged += comboBoxRepaymentFrequency_SelectedIndexChanged;
             // 
             // groupBoxInterestRate
             // 
@@ -141,49 +150,45 @@
             radioButtonRate9.AutoSize = true;
             radioButtonRate9.Location = new Point(51, 106);
             radioButtonRate9.Name = "radioButtonRate9";
-            radioButtonRate9.Size = new Size(41, 19);
+            radioButtonRate9.Size = new Size(31, 19);
             radioButtonRate9.TabIndex = 2;
             radioButtonRate9.TabStop = true;
-            radioButtonRate9.Text = "9%";
+            radioButtonRate9.Text = "9";
             radioButtonRate9.UseVisualStyleBackColor = true;
+            radioButtonRate9.CheckedChanged += radioButtonRate7_CheckedChanged;
             // 
             // radioButtonRate8
             // 
             radioButtonRate8.AutoSize = true;
             radioButtonRate8.Location = new Point(51, 69);
             radioButtonRate8.Name = "radioButtonRate8";
-            radioButtonRate8.Size = new Size(41, 19);
+            radioButtonRate8.Size = new Size(31, 19);
             radioButtonRate8.TabIndex = 1;
             radioButtonRate8.TabStop = true;
-            radioButtonRate8.Text = "8%";
+            radioButtonRate8.Text = "8";
             radioButtonRate8.UseVisualStyleBackColor = true;
+            radioButtonRate8.CheckedChanged += radioButtonRate7_CheckedChanged;
             // 
             // radioButtonRate7
             // 
             radioButtonRate7.AutoSize = true;
             radioButtonRate7.Location = new Point(51, 33);
             radioButtonRate7.Name = "radioButtonRate7";
-            radioButtonRate7.Size = new Size(41, 19);
+            radioButtonRate7.Size = new Size(31, 19);
             radioButtonRate7.TabIndex = 0;
             radioButtonRate7.TabStop = true;
-            radioButtonRate7.Text = "7%";
+            radioButtonRate7.Text = "7";
             radioButtonRate7.UseVisualStyleBackColor = true;
+            radioButtonRate7.CheckedChanged += radioButtonRate7_CheckedChanged;
             // 
-            // labelNumberOfRefunds
+            // labelNumberOfRefundsString
             // 
-            labelNumberOfRefunds.AutoSize = true;
-            labelNumberOfRefunds.Location = new Point(363, 252);
-            labelNumberOfRefunds.Name = "labelNumberOfRefunds";
-            labelNumberOfRefunds.Size = new Size(125, 15);
-            labelNumberOfRefunds.TabIndex = 12;
-            labelNumberOfRefunds.Text = "Remboursements en €";
-            // 
-            // DisplayAmount
-            // 
-            DisplayAmount.Location = new Point(289, 311);
-            DisplayAmount.Name = "DisplayAmount";
-            DisplayAmount.Size = new Size(188, 72);
-            DisplayAmount.TabIndex = 13;
+            labelNumberOfRefundsString.AutoSize = true;
+            labelNumberOfRefundsString.Location = new Point(363, 252);
+            labelNumberOfRefundsString.Name = "labelNumberOfRefundsString";
+            labelNumberOfRefundsString.Size = new Size(125, 15);
+            labelNumberOfRefundsString.TabIndex = 12;
+            labelNumberOfRefundsString.Text = "Remboursements en €";
             // 
             // buttonValidate
             // 
@@ -193,6 +198,7 @@
             buttonValidate.TabIndex = 14;
             buttonValidate.Text = "Valider";
             buttonValidate.UseVisualStyleBackColor = true;
+            buttonValidate.Click += buttonValidate_Click;
             // 
             // buttonCancel
             // 
@@ -202,26 +208,43 @@
             buttonCancel.TabIndex = 15;
             buttonCancel.Text = "Annuler";
             buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
-            // label
+            // labeLNumberOfRefundsInt
             // 
-            label.AutoSize = true;
-            label.Location = new Point(327, 252);
-            label.Name = "label";
-            label.Size = new Size(13, 15);
-            label.TabIndex = 16;
-            label.Text = "1";
+            labeLNumberOfRefundsInt.AutoSize = true;
+            labeLNumberOfRefundsInt.Location = new Point(327, 252);
+            labeLNumberOfRefundsInt.Name = "labeLNumberOfRefundsInt";
+            labeLNumberOfRefundsInt.Size = new Size(13, 15);
+            labeLNumberOfRefundsInt.TabIndex = 16;
+            labeLNumberOfRefundsInt.Text = "1";
+            // 
+            // labelAmountDisplay
+            // 
+            labelAmountDisplay.AutoSize = true;
+            labelAmountDisplay.Location = new Point(327, 329);
+            labelAmountDisplay.Name = "labelAmountDisplay";
+            labelAmountDisplay.Size = new Size(0, 15);
+            labelAmountDisplay.TabIndex = 17;
+            // 
+            // errorProviderCheckBorrowedCapital
+            // 
+            errorProviderCheckBorrowedCapital.ContainerControl = this;
+            // 
+            // errorProviderNumberAboveMax
+            // 
+            errorProviderNumberAboveMax.ContainerControl = this;
             // 
             // FormLoanRepayment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label);
+            Controls.Add(labelAmountDisplay);
+            Controls.Add(labeLNumberOfRefundsInt);
             Controls.Add(buttonCancel);
             Controls.Add(buttonValidate);
-            Controls.Add(DisplayAmount);
-            Controls.Add(labelNumberOfRefunds);
+            Controls.Add(labelNumberOfRefundsString);
             Controls.Add(groupBoxInterestRate);
             Controls.Add(comboBoxRepaymentFrequency);
             Controls.Add(labelRepaymentFrequency);
@@ -240,6 +263,8 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownDurationInMonths).EndInit();
             groupBoxInterestRate.ResumeLayout(false);
             groupBoxInterestRate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderCheckBorrowedCapital).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderNumberAboveMax).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -259,10 +284,12 @@
         private RadioButton radioButtonRate8;
         private RadioButton radioButtonRate7;
         private RadioButton radioButtonRate9;
-        private Label labelNumberOfRefunds;
-        private Panel DisplayAmount;
+        private Label labelNumberOfRefundsString;
         private Button buttonValidate;
         private Button buttonCancel;
-        private Label label;
+        private Label labeLNumberOfRefundsInt;
+        private Label labelAmountDisplay;
+        private ErrorProvider errorProviderCheckBorrowedCapital;
+        private ErrorProvider errorProviderNumberAboveMax;
     }
 }

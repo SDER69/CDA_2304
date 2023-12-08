@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryEmprunt\CL_LoanRepayment.csproj" />
+    <ProjectReference Include="..\CL_CheckButtons\CL_CheckButtons.csproj" />
+  </ItemGroup>
 
 </Project>
