@@ -66,7 +66,7 @@ namespace WinFormsAppLoanRepayment
         private void numericUpDownDurationInMonths_ValueChanged(object sender, EventArgs e)
         {
             int newValue;
-            if (this.numericUpDownDurationInMonths.Value > this.loan.NumberOfRefunds)
+            if ((this.numericUpDownDurationInMonths.Value > this.loan.NumberOfRefunds) && (this.loan.RepaymentFrequency != 1))
             {
                 newValue = RegulationOfNumbersOfRefunds((int)this.numericUpDownDurationInMonths.Value, this.loan.RepaymentFrequency, true);
             }
@@ -146,9 +146,9 @@ namespace WinFormsAppLoanRepayment
             this.textBoxBorrowedCapital.Text = this.loan.BorrowedCapital.ToString();
 
             //numberOfRefunds
-            if(this.loan.NumberOfRefunds > 360)
+            if (this.loan.NumberOfRefunds > this.numericUpDownDurationInMonths.Maximum)
             {
-                this.loan.NumberOfRefunds = 360;
+                this.loan.NumberOfRefunds = (int)this.numericUpDownDurationInMonths.Maximum;
             }
             else
             {
@@ -156,7 +156,7 @@ namespace WinFormsAppLoanRepayment
                 this.hScrollBarDurationInMonths.Value = v;
                 this.numericUpDownDurationInMonths.Value = v;
             }
-            
+
             //repaymentFrequency
             if (this.loan.RepaymentFrequency == 1)
             {
@@ -259,6 +259,8 @@ namespace WinFormsAppLoanRepayment
                 this.textBoxName.Text = string.Empty;
             }
         }
+
+
     }
 }
 
