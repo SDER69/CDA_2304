@@ -1,32 +1,31 @@
-﻿using CL_Production;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CL_CrateProduction
+namespace ClassLibraryProduction
 {
-    internal class Crate
+    public class Crate
     {
         // Attributes
-        private bool inGoodOrder;
+        private bool isInGoodOrder;
         private DateTime productionDate;
- 
+
 
         // Getters and setters
-        public bool InGoodOrder { get => inGoodOrder; }
-        public DateTime ProductionDate { get => productionDate;  }
+        public bool IsInGoodOrder { get => isInGoodOrder; }
+        public DateTime ProductionDate { get => productionDate; }
 
         // Constructors
-        public Crate(bool _inGoodOrder, DateTime _productionDate)
+        public Crate(bool _isInGoodOrder, DateTime _productionDate)
         {
-            this.inGoodOrder = _inGoodOrder;
+            this.isInGoodOrder = _isInGoodOrder;
             this.productionDate = _productionDate;
         }
 
         public Crate(Crate crateToCopy)
-           : this(crateToCopy.inGoodOrder,crateToCopy.ProductionDate)
+           : this(crateToCopy.isInGoodOrder, crateToCopy.ProductionDate)
         {
 
         }
@@ -34,31 +33,22 @@ namespace CL_CrateProduction
         // Methods
         public override string ToString()
         {
-            return "Crate in good order : " + this.inGoodOrder.ToString() + "\n\r" +
+            return "Crate in good order : " + this.isInGoodOrder.ToString() + "\n\r" +
                     "Date and time of the production : " + this.productionDate.ToShortDateString() + "\n\r";
         }
 
         public override bool Equals(object? obj)
         {
             return obj is Crate crate &&
-                   inGoodOrder == crate.inGoodOrder &&
+                   isInGoodOrder == crate.isInGoodOrder &&
                    productionDate == crate.productionDate &&
-                   InGoodOrder == crate.InGoodOrder &&
+                   IsInGoodOrder == crate.IsInGoodOrder &&
                    ProductionDate == crate.ProductionDate;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(inGoodOrder, productionDate, InGoodOrder, ProductionDate);
+            return HashCode.Combine(isInGoodOrder, productionDate, isInGoodOrder, ProductionDate);
         }
-
-      
-
-
-
-
-
-
-
     }
 }

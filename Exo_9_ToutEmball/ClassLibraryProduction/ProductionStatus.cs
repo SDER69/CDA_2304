@@ -4,16 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CL_CrateProduction
+namespace ClassLibraryProduction
 {
-    internal class ProductionStatus
-    {
-        public enum Status
+        public enum ProductionStatus
         {
             ProductionWaitingToStart,
             ProductionStarted,
             ProductionSuspended,
             ProductionCompleted
         }
-    }
 }
+

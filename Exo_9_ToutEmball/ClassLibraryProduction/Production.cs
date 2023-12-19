@@ -1,31 +1,66 @@
-﻿using CL_CrateProduction;
-using System.Transactions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CL_Production
+namespace ClassLibraryProduction
 {
     public class Production
     {
         // Attributes
         private string productionName;
         private readonly int numberOfCratestoProduce;
+        private readonly int numberOfCratesProducedPerHour;
         private char productionType;
-        private ProductionStatus.Status status;
+        private ProductionStatus status;
         private List<Crate> producedCrates;
+        private Thread thread;
 
         private Random r;
+
+        //Events
+        public delegate void DelegateCrateProductionInfo(int numberOfCratesProduced, int target,Production p);
+
+        public event DelegateCrateProductionInfo NewCrateProduced;
+
 
         // Getters and setters
         public string ProductionName { get => productionName; private set => productionName = value; }
 
         public char ProductionType { get => productionType; private set => productionType = value; }
 
+        public int NumberOfCratestoProduce => numberOfCratestoProduce;
+
+        public int NumberOfCratesProducedPerHour => numberOfCratesProducedPerHour;
+
+        public ProductionStatus Status { get => status; private set => status = value; }
+
         // Constructors
         public Production(string _productionName, int _numberOfCratesToProduce, char _productionType)
         {
             this.productionName = _productionName;
             this.numberOfCratestoProduce = _numberOfCratesToProduce;
-            this.productionType = _productionType;   
-            r= new Random();
+            this.productionType = _productionType;
+            this.producedCrates = new List<Crate>();
+            this.status = ProductionStatus.ProductionWaitingToStart;
+            r = new Random();
+            thread = new Thread(new ThreadStart(Run));
+            this.thread.Start();
+        }
+
+        public void Run()
+        {
+            while (this.NumberOfGoodCratesProduced() != this.numberOfCratestoProduce)
+            {
+                if (this.status == ProductionStatus.ProductionStarted)
+                {
+                    AddCrate();
+                }
+                Thread.Sleep(100);
+            }
+            this.status = ProductionStatus.ProductionCompleted;
         }
 
         public Production(Production productionToCopy)
@@ -39,6 +74,7 @@ namespace CL_Production
         {
             return "Name : " + this.productionName + "\n\r" +
                    "Number of crates to produce : " + this.numberOfCratestoProduce + "\n\r" +
+                   "Number of good crates to produce : " + this.NumberOfGoodCratesProduced() + "\n\r" +
                    "Production type : " + this.productionType + "\n\r";
 
         }
@@ -57,10 +93,13 @@ namespace CL_Production
             return HashCode.Combine(productionName, numberOfCratestoProduce, productionType, ProductionName, ProductionType);
         }
 
-        //public double ErrorRateOfLastHour()
-        //{
-            
-         
+        
+
+
+    //public double ErrorRateOfLastHour()
+    //{
+
+
         //}
 
         //public double ErrorRateFromStart()
@@ -73,20 +112,20 @@ namespace CL_Production
 
         //        }
         //    }
-            
+
         //}
 
-        public bool IsComplete()
+    public bool IsComplete()
         {
-            return this.status == ProductionStatus.Status.ProductionCompleted;  
+            return this.status == ProductionStatus.ProductionCompleted;
         }
 
-        public bool StartProduction() 
+        public bool StartProduction()
         {
-            
-            if(this.status == ProductionStatus.Status.ProductionWaitingToStart || this.status == ProductionStatus.Status.ProductionSuspended)
+
+            if (this.status == ProductionStatus.ProductionWaitingToStart || this.status == ProductionStatus.ProductionSuspended)
             {
-                this.status = ProductionStatus.Status.ProductionStarted;
+                this.status = ProductionStatus.ProductionStarted;
                 return true;
             }
             return false;
@@ -94,9 +133,9 @@ namespace CL_Production
 
         public bool SuspendProduction()
         {
-            if (this.status == ProductionStatus.Status.ProductionStarted)
+            if (this.status == ProductionStatus.ProductionStarted)
             {
-                this.status = ProductionStatus.Status.ProductionSuspended;
+                this.status = ProductionStatus.ProductionSuspended;
                 return true;
             }
             return false;
@@ -110,23 +149,24 @@ namespace CL_Production
         public void AddCrate()
         {
             int val = r.Next(1, 10);
-
-            Crate crate = new Crate((val!=1), DateTime.Now);
+            Crate crate = new Crate((val != 1), DateTime.Now);
             this.producedCrates.Add(crate);
-            
-            
+            NewCrateProduced(this.NumberOfGoodCratesProduced(), this.numberOfCratestoProduce,this);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-    }
+        public int NumberOfGoodCratesProduced()
+        {
+            //return this.producedCrates.Count;
+            int count = 0;
+            //foreach(Crate c in this.producedCrates)
+            //{
+            //    if (c.IsInGoodOrder)
+            //    {
+            //        count++;
+            //    }
+            //}
+            count = this.producedCrates.FindAll(c => c.IsInGoodOrder).Count;
+            return count;
+        }
+    }      
 }
