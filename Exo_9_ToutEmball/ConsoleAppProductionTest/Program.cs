@@ -17,7 +17,7 @@ namespace ConsoleAppProductionTest
                 Thread.Sleep(500);
                 p.StartProduction();
             }   
-}
+        }
 
         private static void P_NewCrateProduced(int numberOfCratesProduced, int target, Production p)
         {

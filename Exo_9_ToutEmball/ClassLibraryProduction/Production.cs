@@ -11,7 +11,7 @@ namespace ClassLibraryProduction
     {
         // Attributes
         private string productionName;
-        private readonly int numberOfCratestoProduce;
+        private readonly int numberOfCratesToProduce;
         private readonly int numberOfCratesProducedPerHour;
         private char productionType;
         private ProductionStatus status;
@@ -22,26 +22,25 @@ namespace ClassLibraryProduction
 
         //Events
         public delegate void DelegateCrateProductionInfo(int numberOfCratesProduced, int target,Production p);
-
         public event DelegateCrateProductionInfo NewCrateProduced;
-
-
+    
         // Getters and setters
         public string ProductionName { get => productionName; private set => productionName = value; }
 
         public char ProductionType { get => productionType; private set => productionType = value; }
 
-        public int NumberOfCratestoProduce => numberOfCratestoProduce;
+        public int NumberOfCratesToProduce => numberOfCratesToProduce;
 
         public int NumberOfCratesProducedPerHour => numberOfCratesProducedPerHour;
 
         public ProductionStatus Status { get => status; private set => status = value; }
+        public List<Crate> ProducedCrates { get => producedCrates; private set => producedCrates = value; }
 
         // Constructors
         public Production(string _productionName, int _numberOfCratesToProduce, char _productionType)
         {
             this.productionName = _productionName;
-            this.numberOfCratestoProduce = _numberOfCratesToProduce;
+            this.numberOfCratesToProduce = _numberOfCratesToProduce;
             this.productionType = _productionType;
             this.producedCrates = new List<Crate>();
             this.status = ProductionStatus.ProductionWaitingToStart;
@@ -52,7 +51,7 @@ namespace ClassLibraryProduction
 
         public void Run()
         {
-            while (this.NumberOfGoodCratesProduced() != this.numberOfCratestoProduce)
+            while (this.NumberOfGoodCratesProduced() != this.numberOfCratesToProduce)
             {
                 if (this.status == ProductionStatus.ProductionStarted)
                 {
@@ -64,7 +63,7 @@ namespace ClassLibraryProduction
         }
 
         public Production(Production productionToCopy)
-            : this(productionToCopy.ProductionName, productionToCopy.numberOfCratestoProduce, productionToCopy.productionType)
+            : this(productionToCopy.ProductionName, productionToCopy.numberOfCratesToProduce, productionToCopy.productionType)
         {
 
         }
@@ -73,7 +72,7 @@ namespace ClassLibraryProduction
         public override string ToString()
         {
             return "Name : " + this.productionName + "\n\r" +
-                   "Number of crates to produce : " + this.numberOfCratestoProduce + "\n\r" +
+                   "Number of crates to produce : " + this.numberOfCratesToProduce + "\n\r" +
                    "Number of good crates to produce : " + this.NumberOfGoodCratesProduced() + "\n\r" +
                    "Production type : " + this.productionType + "\n\r";
 
@@ -82,7 +81,7 @@ namespace ClassLibraryProduction
         {
             return obj is Production production &&
                    productionName == production.productionName &&
-                   numberOfCratestoProduce == production.numberOfCratestoProduce &&
+                   numberOfCratesToProduce == production.numberOfCratesToProduce &&
                    productionType == production.productionType &&
                    ProductionName == production.ProductionName &&
                    ProductionType == production.ProductionType;
@@ -90,7 +89,7 @@ namespace ClassLibraryProduction
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(productionName, numberOfCratestoProduce, productionType, ProductionName, ProductionType);
+            return HashCode.Combine(productionName, numberOfCratesToProduce, productionType, ProductionName, ProductionType);
         }
 
         
@@ -143,7 +142,7 @@ namespace ClassLibraryProduction
 
         public bool AchievedProductionTarget()
         {
-            return this.producedCrates.Count == this.numberOfCratestoProduce;
+            return this.producedCrates.Count == this.numberOfCratesToProduce;
         }
 
         public void AddCrate()
@@ -151,7 +150,7 @@ namespace ClassLibraryProduction
             int val = r.Next(1, 10);
             Crate crate = new Crate((val != 1), DateTime.Now);
             this.producedCrates.Add(crate);
-            NewCrateProduced(this.NumberOfGoodCratesProduced(), this.numberOfCratestoProduce,this);
+            NewCrateProduced(this.NumberOfGoodCratesProduced(), this.numberOfCratesToProduce,this);
         }
 
         public int NumberOfGoodCratesProduced()
