@@ -12,12 +12,11 @@ namespace ClassLibraryExpression
         protected Expression opGauche;
         protected Expression opDroite;
 
-
         // Constructeurs
-        public Binaire(Expression _op1, Expression _op2)
+        public Binaire(Expression _opGauche, Expression _opDroite)
         {
-            this.opGauche = _op1;
-            this.opDroite = _op2;
+            this.opGauche = _opGauche;
+            this.opDroite = _opDroite;
         }
 
         

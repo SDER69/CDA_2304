@@ -20,7 +20,7 @@ namespace ConsoleAppExpression
             int resultat3 = exp3.Evalue();
             Console.WriteLine(exp3.Format());
 
-            ClassLibraryExpression.Expression exp4 = new Soustraction(new Nombre(33), new Soustraction(new Nombre(33), new Nombre(11)));
+            ClassLibraryExpression.Expression exp4 = new Soustraction(new Nombre(33), new Soustraction(new Nombre(33), (new Nombre(11))));
             int resultat4 = exp4.Evalue();
             Console.WriteLine(exp4.Format());
         }

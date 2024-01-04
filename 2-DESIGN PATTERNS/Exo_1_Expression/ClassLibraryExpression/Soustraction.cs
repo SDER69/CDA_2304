@@ -19,13 +19,24 @@ namespace ClassLibraryExpression
 
         public override string ToString()
         {
-            return this.opGauche.ToString()+ "-" + this.opDroite.ToString();
+            if(this.opDroite is Nombre)
+            {
+                return this.opGauche.ToString() + "-" + this.opDroite.ToString();
+            }
+            else
+            {
+                return this.opGauche.ToString() + "-(" + this.opDroite.ToString() + ")";
+            }
+            //return this.opGauche.ToString()+ "-" + this.opDroite.ToString();
         }
 
-        public override String Format()
+        public override String FormatGauche()
         {
-            return ToString() + " = " + this.Evalue();
-
+            return this.ToString();
         }
+
+      
+
+
     }
 }

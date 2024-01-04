@@ -32,9 +32,10 @@ namespace ClassLibraryExpression
             return this.valeur.ToString();
         }
 
-        public override string Format()
+        public override string FormatGauche()
         {
-            throw new NotImplementedException();
+            return this.ToString();
         }
+
     }
 }

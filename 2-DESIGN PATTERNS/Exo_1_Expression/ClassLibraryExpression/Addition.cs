@@ -22,10 +22,22 @@ namespace ClassLibraryExpression
             return this.opGauche.ToString() + "+" + this.opDroite.ToString();
         }
 
-        public override String Format()
+        /*public override String Format()
         { 
             return ToString() + " = " + this.Evalue();
 
+        }*/
+
+        /*public override String FormatGauche()
+        { 
+          return this.opGauche.FormatGauche() + "+" + this.opDroite.FormatGauche();
+        }*/
+
+        public override String FormatGauche()
+        {
+            return this.ToString();
         }
+
+
     }
 }
