@@ -12,7 +12,7 @@ namespace ClassLibraryExpression
         private int valeur;
         
         // Getters
-        public int Valeur { get => valeur; set => valeur = value; }
+        //public int Valeur { get => valeur; set => valeur = value; }
 
         // Constructeurs
         public Nombre(int _valeur)

@@ -14,12 +14,12 @@ namespace ClassLibraryExpression
 
         public override int Evalue()
         {
-           return this.OpGauche.Evalue() + this.OpDroite.Evalue();
+           return this.opGauche.Evalue() + this.opDroite.Evalue();
         }
 
         public override string ToString()
         {
-            return this.OpGauche.ToString() + "+" + this.OpDroite.ToString();
+            return this.opGauche.ToString() + "+" + this.opDroite.ToString();
         }
 
         public override String Format()
