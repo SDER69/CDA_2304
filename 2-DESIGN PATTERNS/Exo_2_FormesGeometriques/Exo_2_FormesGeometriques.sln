@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppFormesGeometriques", "ConsoleAppFormesGeometriques\ConsoleAppFormesGeometriques.csproj", "{AF35E956-98F0-46A0-99A2-84DF307BCD86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CL_FormesGeometriques", "CL_FormesGeometriques\CL_FormesGeometriques.csproj", "{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF35E956-98F0-46A0-99A2-84DF307BCD86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF35E956-98F0-46A0-99A2-84DF307BCD86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF35E956-98F0-46A0-99A2-84DF307BCD86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF35E956-98F0-46A0-99A2-84DF307BCD86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {494EFCC9-E090-40FE-8219-1D0F2EEB00C5}
+	EndGlobalSection
+EndGlobal
