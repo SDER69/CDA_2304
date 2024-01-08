@@ -37,7 +37,6 @@
         }
 
         // Méthodes
-
         public override string ToString()
         {
             return "Nom : " + this.nom + "\n\r" +

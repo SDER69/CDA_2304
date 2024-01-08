@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             labelNom = new Label();
             textBoxNom = new TextBox();
             labelprenom = new Label();
@@ -45,118 +46,137 @@
             labelFormatDate = new Label();
             labelEmail = new Label();
             textBoxEmail = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // labelNom
             // 
             labelNom.AutoSize = true;
-            labelNom.Location = new Point(47, 67);
+            labelNom.Location = new Point(67, 112);
+            labelNom.Margin = new Padding(4, 0, 4, 0);
             labelNom.Name = "labelNom";
-            labelNom.Size = new Size(34, 15);
+            labelNom.Size = new Size(52, 25);
             labelNom.TabIndex = 0;
             labelNom.Text = "Nom";
             // 
             // textBoxNom
             // 
-            textBoxNom.Location = new Point(182, 59);
+            textBoxNom.Location = new Point(260, 98);
+            textBoxNom.Margin = new Padding(4, 5, 4, 5);
             textBoxNom.Name = "textBoxNom";
-            textBoxNom.Size = new Size(100, 23);
+            textBoxNom.Size = new Size(141, 31);
             textBoxNom.TabIndex = 1;
+            textBoxNom.Leave += textBoxNom_Leave;
             // 
             // labelprenom
             // 
             labelprenom.AutoSize = true;
-            labelprenom.Location = new Point(47, 120);
+            labelprenom.Location = new Point(67, 200);
+            labelprenom.Margin = new Padding(4, 0, 4, 0);
             labelprenom.Name = "labelprenom";
-            labelprenom.Size = new Size(49, 15);
+            labelprenom.Size = new Size(74, 25);
             labelprenom.TabIndex = 2;
             labelprenom.Text = "Prénom";
             // 
             // textBoxPrenom
             // 
-            textBoxPrenom.Location = new Point(182, 112);
+            textBoxPrenom.Location = new Point(260, 187);
+            textBoxPrenom.Margin = new Padding(4, 5, 4, 5);
             textBoxPrenom.Name = "textBoxPrenom";
-            textBoxPrenom.Size = new Size(100, 23);
+            textBoxPrenom.Size = new Size(141, 31);
             textBoxPrenom.TabIndex = 3;
+            textBoxPrenom.Leave += textBoxPrenom_Leave;
             // 
             // labelDateDeNaissance
             // 
             labelDateDeNaissance.AutoSize = true;
-            labelDateDeNaissance.Location = new Point(47, 174);
+            labelDateDeNaissance.Location = new Point(67, 290);
+            labelDateDeNaissance.Margin = new Padding(4, 0, 4, 0);
             labelDateDeNaissance.Name = "labelDateDeNaissance";
-            labelDateDeNaissance.Size = new Size(101, 15);
+            labelDateDeNaissance.Size = new Size(154, 25);
             labelDateDeNaissance.TabIndex = 4;
             labelDateDeNaissance.Text = "Date de naissance";
             // 
             // textBoxDateDeNaissance
             // 
-            textBoxDateDeNaissance.Location = new Point(182, 166);
+            textBoxDateDeNaissance.Location = new Point(260, 277);
+            textBoxDateDeNaissance.Margin = new Padding(4, 5, 4, 5);
             textBoxDateDeNaissance.Name = "textBoxDateDeNaissance";
-            textBoxDateDeNaissance.Size = new Size(100, 23);
+            textBoxDateDeNaissance.Size = new Size(141, 31);
             textBoxDateDeNaissance.TabIndex = 5;
+            textBoxDateDeNaissance.Leave += textBoxDateDeNaissance_Leave;
             // 
             // labelAdresse
             // 
             labelAdresse.AutoSize = true;
-            labelAdresse.Location = new Point(47, 225);
+            labelAdresse.Location = new Point(67, 375);
+            labelAdresse.Margin = new Padding(4, 0, 4, 0);
             labelAdresse.Name = "labelAdresse";
-            labelAdresse.Size = new Size(83, 15);
+            labelAdresse.Size = new Size(129, 25);
             labelAdresse.TabIndex = 6;
             labelAdresse.Text = "Adresse postal";
             // 
             // textBoxAdressePostal
             // 
-            textBoxAdressePostal.Location = new Point(182, 217);
+            textBoxAdressePostal.Location = new Point(260, 362);
+            textBoxAdressePostal.Margin = new Padding(4, 5, 4, 5);
             textBoxAdressePostal.Name = "textBoxAdressePostal";
-            textBoxAdressePostal.Size = new Size(100, 23);
+            textBoxAdressePostal.Size = new Size(141, 31);
             textBoxAdressePostal.TabIndex = 7;
             // 
             // labelCodePostal
             // 
             labelCodePostal.AutoSize = true;
-            labelCodePostal.Location = new Point(47, 318);
+            labelCodePostal.Location = new Point(67, 530);
+            labelCodePostal.Margin = new Padding(4, 0, 4, 0);
             labelCodePostal.Name = "labelCodePostal";
-            labelCodePostal.Size = new Size(70, 15);
+            labelCodePostal.Size = new Size(108, 25);
             labelCodePostal.TabIndex = 8;
             labelCodePostal.Text = "Code postal";
             // 
             // textBoxCodePostal
             // 
-            textBoxCodePostal.Location = new Point(182, 310);
+            textBoxCodePostal.Location = new Point(260, 517);
+            textBoxCodePostal.Margin = new Padding(4, 5, 4, 5);
             textBoxCodePostal.Name = "textBoxCodePostal";
-            textBoxCodePostal.Size = new Size(100, 23);
+            textBoxCodePostal.Size = new Size(141, 31);
             textBoxCodePostal.TabIndex = 9;
             // 
             // labelTel
             // 
             labelTel.AutoSize = true;
-            labelTel.Location = new Point(47, 365);
+            labelTel.Location = new Point(67, 608);
+            labelTel.Margin = new Padding(4, 0, 4, 0);
             labelTel.Name = "labelTel";
-            labelTel.Size = new Size(61, 15);
+            labelTel.Size = new Size(92, 25);
             labelTel.TabIndex = 10;
             labelTel.Text = "Téléphone";
             // 
             // textBoxTel
             // 
-            textBoxTel.Location = new Point(182, 357);
+            textBoxTel.Location = new Point(260, 595);
+            textBoxTel.Margin = new Padding(4, 5, 4, 5);
             textBoxTel.Name = "textBoxTel";
-            textBoxTel.Size = new Size(100, 23);
+            textBoxTel.Size = new Size(141, 31);
             textBoxTel.TabIndex = 11;
             // 
             // buttonValider
             // 
-            buttonValider.Location = new Point(597, 318);
+            buttonValider.Location = new Point(853, 530);
+            buttonValider.Margin = new Padding(4, 5, 4, 5);
             buttonValider.Name = "buttonValider";
-            buttonValider.Size = new Size(75, 23);
+            buttonValider.Size = new Size(107, 38);
             buttonValider.TabIndex = 12;
             buttonValider.Text = "Valider";
             buttonValider.UseVisualStyleBackColor = true;
             // 
             // buttonEffacer
             // 
-            buttonEffacer.Location = new Point(597, 365);
+            buttonEffacer.Location = new Point(853, 608);
+            buttonEffacer.Margin = new Padding(4, 5, 4, 5);
             buttonEffacer.Name = "buttonEffacer";
-            buttonEffacer.Size = new Size(75, 23);
+            buttonEffacer.Size = new Size(107, 38);
             buttonEffacer.TabIndex = 13;
             buttonEffacer.Text = "Effacer";
             buttonEffacer.UseVisualStyleBackColor = true;
@@ -164,33 +184,40 @@
             // labelFormatDate
             // 
             labelFormatDate.AutoSize = true;
-            labelFormatDate.Location = new Point(309, 166);
+            labelFormatDate.Location = new Point(441, 277);
+            labelFormatDate.Margin = new Padding(4, 0, 4, 0);
             labelFormatDate.Name = "labelFormatDate";
-            labelFormatDate.Size = new Size(87, 15);
+            labelFormatDate.Size = new Size(127, 25);
             labelFormatDate.TabIndex = 14;
             labelFormatDate.Text = "(JJ/MM/AAAA)";
             // 
             // labelEmail
             // 
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(47, 273);
+            labelEmail.Location = new Point(67, 455);
+            labelEmail.Margin = new Padding(4, 0, 4, 0);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(36, 15);
+            labelEmail.Size = new Size(54, 25);
             labelEmail.TabIndex = 15;
             labelEmail.Text = "Email";
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(182, 265);
+            textBoxEmail.Location = new Point(260, 442);
+            textBoxEmail.Margin = new Padding(4, 5, 4, 5);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(100, 23);
+            textBoxEmail.Size = new Size(141, 31);
             textBoxEmail.TabIndex = 16;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FormContact
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(703, 416);
+            ClientSize = new Size(1004, 693);
             Controls.Add(textBoxEmail);
             Controls.Add(labelEmail);
             Controls.Add(labelFormatDate);
@@ -209,9 +236,11 @@
             Controls.Add(textBoxNom);
             Controls.Add(labelNom);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "FormContact";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contact";
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -235,5 +264,6 @@
         private Label labelFormatDate;
         private Label labelEmail;
         private TextBox textBoxEmail;
+        private ErrorProvider errorProvider1;
     }
 }

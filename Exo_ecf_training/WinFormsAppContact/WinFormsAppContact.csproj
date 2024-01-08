@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CL_Contact\CL_Contact.csproj" />
+    <ProjectReference Include="..\CL_VerifContact\CL_VerifContact.csproj" />
   </ItemGroup>
 
 </Project>

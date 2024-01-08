@@ -1,4 +1,5 @@
 using CL_Contact;
+using CL_VerifContact;
 using System.Transactions;
 
 namespace WinFormsAppContact
@@ -30,6 +31,66 @@ namespace WinFormsAppContact
             this.textBoxCodePostal.Text = _contact.CodePostal.ToString();
         }
 
+        private void textBoxNom_Leave(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
 
+            if (box != null)
+            {
+                if (!VerifContact.VerifNom(box.Text))
+                {
+                    this.errorProvider1.SetError(box, "Veuillez saisir un nom valide");
+                }
+
+                else if (box.Text.Length > 30)
+                {
+                    this.errorProvider1.SetError(box, "Veuillez saisir un nom de 30 caractères maximum");
+                }
+
+                else
+                {
+                    this.errorProvider1.SetError(box, "");
+                }
+            }
+        }
+
+        private void textBoxPrenom_Leave(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+
+            if (box != null)
+            {
+                if (!VerifContact.VerifPrenom(box.Text))
+                {
+                    this.errorProvider1.SetError(box, "Veuillez saisir un prénom valide");
+                }
+
+                else if (box.Text.Length > 30)
+                {
+                    this.errorProvider1.SetError(box, "Veuillez saisir un prénom de 30 caractères maximum");
+                }
+
+                else
+                {
+                    this.errorProvider1.SetError(box, "");
+                }
+            }
+
+        }
+
+        private void textBoxDateDeNaissance_Leave(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box != null)
+            {
+                if(!VerifContact.VerifDateFormat(box.Text))
+                {
+                    this.errorProvider1.SetError(box, "Veuillez saisir une date valide");
+                }
+
+                else { }
+            
+            }
+        }
     }
 }
