@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppContact", "WinFormsAppContact\WinFormsAppContact.csproj", "{B1B64AB0-1781-472B-83B6-B20180787D02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CL_Contact", "CL_Contact\CL_Contact.csproj", "{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B64AB0-1781-472B-83B6-B20180787D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B64AB0-1781-472B-83B6-B20180787D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B64AB0-1781-472B-83B6-B20180787D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B64AB0-1781-472B-83B6-B20180787D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABBB449D-E0FB-4755-A53F-BA418E0137A5}
+	EndGlobalSection
+EndGlobal
