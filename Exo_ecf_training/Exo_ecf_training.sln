@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppContact", "WinFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CL_Contact", "CL_Contact\CL_Contact.csproj", "{1A61BE5E-2D88-44A8-BDE9-6F38E55E6F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CL_VerifContact", "CL_VerifContact\CL_VerifContact.csproj", "{0DA14F7B-DE89-4EB9-9FC6-F7E1F16CE06C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CL_VerifContact", "CL_VerifContact\CL_VerifContact.csproj", "{0DA14F7B-DE89-4EB9-9FC6-F7E1F16CE06C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CL_Serialisation", "CL_Serialisation\CL_Serialisation.csproj", "{F41D182C-2D70-4ECE-BCC6-9D38F11B070F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0DA14F7B-DE89-4EB9-9FC6-F7E1F16CE06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DA14F7B-DE89-4EB9-9FC6-F7E1F16CE06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DA14F7B-DE89-4EB9-9FC6-F7E1F16CE06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41D182C-2D70-4ECE-BCC6-9D38F11B070F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41D182C-2D70-4ECE-BCC6-9D38F11B070F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41D182C-2D70-4ECE-BCC6-9D38F11B070F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41D182C-2D70-4ECE-BCC6-9D38F11B070F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

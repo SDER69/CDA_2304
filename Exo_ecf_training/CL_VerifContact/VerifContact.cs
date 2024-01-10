@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace CL_VerifContact
@@ -31,20 +32,52 @@ namespace CL_VerifContact
             return valideDateGloblale;
         }
 
-        public static double VerifDateMajorite(DateTime dateDeNaissance)
+        public static int GetAge(DateTime DateDeNaissance)
         {
-            //Date et heure actuelle.
-            DateTime DateCourante = DateTime.Now;
-            //Création d'un objet datetime
-            DateTime DateNaissance = dateDeNaissance;
+            // Age théorique
+            int age = DateTime.Now.Year - DateDeNaissance.Year;
 
-            TimeSpan ts = DateCourante - DateNaissance;
-            Console.WriteLine(ts);
-            return  ts.TotalDays; 
+            // Date de l'anniversaire de cette année
+            DateTime DateAnniv =
+                  new DateTime(DateTime.Now.Year, DateDeNaissance.Month, DateDeNaissance.Day);
+
+            // Si pas encore passé, retirer 1 an
+            if (DateAnniv > DateTime.Now)
+                age--;
+
+            return age;
         }
 
+        public static Boolean VerifMajorite(DateTime dateDeNaissance)
+        {
+            if(GetAge(dateDeNaissance) >= 18)
+            {
+                return true;
+            }
+            return false;
+        }
 
-   
+        public static Boolean VerifEmail(string email)
+        {
+            Regex controleEmail = new Regex(@"^[a-z0-9\.]*\@[a-z]*\.[a-z]{2,4}$");
+            return controleEmail.IsMatch(email);
+        }
+
+        public static Boolean VerifCodePostal(string codePostal)
+        {
+            Regex controleCodePostal = new Regex("^[0-9]{5}$");
+            return controleCodePostal.IsMatch(codePostal);
+        }
+
+        public static Boolean VerifTel(string tel)
+        {
+            Regex controleTel = new Regex(@"^([0-9]*(\.|\s|\-))+[0-9]*$");
+            return controleTel.IsMatch(tel);
+        }
+
+        
+
+
 
 
 
