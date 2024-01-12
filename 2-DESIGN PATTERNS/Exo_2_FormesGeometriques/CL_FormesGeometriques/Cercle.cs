@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace CL_FormesGeometriques
 {
-    public class Cercle : FormesGeometriques
+    public class Cercle : FormeGeometrique
     {
-        public Cercle(int _x,int _y) : base(_x,_y)
+        int rayon;
+
+        public int Rayon { get => rayon; set => rayon = value; }
+
+        public Cercle(int _x,int _y, int rayon) : base(_x, _y)
         {
+            this.Rayon = rayon; 
         }
-         
+
         public override void Display()
         {
-            Console.WriteLine("Je suis un cercle à la position : " +'\n' + "x = " + this.x + '\n' + "y = "+this.y);
+            Console.WriteLine("Je suis un cercle à la position : " +'\n' + "x = " + this.X + '\n' + "y = "+this.Y);
+        }
+
+        public override void Accept(IVisiteurDeFormeGeometrique v)
+        {
+            v.Visit(this);
         }
 
     }

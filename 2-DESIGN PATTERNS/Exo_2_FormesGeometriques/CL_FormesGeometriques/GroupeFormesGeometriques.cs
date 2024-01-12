@@ -1,30 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CL_FormesGeometriques
 {
-    public class GroupeFormesGeometriques : FormesGeometriques
+    public class GroupeFormesGeometriques : FormeGeometrique
     {
+        private List<FormeGeometrique> formesGeometriques;
+
         public GroupeFormesGeometriques(int _x, int _y) : base(_x, _y)
         {
+            formesGeometriques = new List<FormeGeometrique>();
         }
 
         public override void Display()
         {
-            Console.WriteLine("x = "+this.x+ "y" +this.y);
+            foreach (FormeGeometrique fg in formesGeometriques)
+            {
+              fg.Display();
+            }
         }
 
-        public bool AjouterFormeGeometrique(FormesGeometriques fg)
+        public bool AjouterFormeGeometrique(FormeGeometrique fg)
         {
-            return false;
+            formesGeometriques.Add(fg);
+            return true;
         }
 
-        public bool RetirerFormeGeometrique(FormesGeometriques fg)
+        public bool RetirerFormeGeometrique(FormeGeometrique fg)
         {
-            return false;
+            formesGeometriques.Remove(fg);
+            return true;    
+        }
+
+        public override void Accept(IVisiteurDeFormeGeometrique v)
+        {
+            v.Visit(this);
+            foreach (FormeGeometrique fg in formesGeometriques)
+            {
+                fg.Accept(v);
+            }
+
         }
     }
 }

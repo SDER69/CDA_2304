@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppFormesGeometriques", "ConsoleAppFormesGeometriques\ConsoleAppFormesGeometriques.csproj", "{AF35E956-98F0-46A0-99A2-84DF307BCD86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppFormesGeometriques", "ConsoleAppFormesGeometriques\ConsoleAppFormesGeometriques.csproj", "{AF35E956-98F0-46A0-99A2-84DF307BCD86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CL_FormesGeometriques", "CL_FormesGeometriques\CL_FormesGeometriques.csproj", "{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CL_FormesGeometriques", "CL_FormesGeometriques\CL_FormesGeometriques.csproj", "{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppFormGeom", "WinFormsAppFormGeom\WinFormsAppFormGeom.csproj", "{F94126F4-2432-402D-964D-A3602BC85543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3DAA636-21F4-4D99-A01F-AD11C5E76C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94126F4-2432-402D-964D-A3602BC85543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94126F4-2432-402D-964D-A3602BC85543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94126F4-2432-402D-964D-A3602BC85543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94126F4-2432-402D-964D-A3602BC85543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

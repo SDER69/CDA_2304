@@ -8,11 +8,16 @@ namespace CL_FormesGeometriques
 {
     public class Carre : Rectangle
     {
-        public Carre(int _x, int _y) : base(_x, _y) { }
+        public Carre(int _x,int _y,int _cote) : base(_x, _y, _cote,_cote) { }
 
         public override void Display()
         {
-            Console.WriteLine("Je suis un carré à la position : " + '\n' + "x = " + this.x + '\n' + "y = " + this.y);
+            Console.WriteLine("Je suis un carré à la position : " + '\n' + "x = " + this.X + '\n' + "y = " + this.Y );
+        }
+
+        public override void Accept(IVisiteurDeFormeGeometrique v)
+        {
+            v.Visit(this);
         }
     }
 }

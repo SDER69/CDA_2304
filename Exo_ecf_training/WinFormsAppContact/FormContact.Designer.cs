@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             labelNom = new Label();
             textBoxNom = new TextBox();
             labelprenom = new Label();
@@ -46,8 +45,6 @@
             labelFormatDate = new Label();
             labelEmail = new Label();
             textBoxEmail = new TextBox();
-            errorProvider1 = new ErrorProvider(components);
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // labelNom
@@ -65,7 +62,6 @@
             textBoxNom.Name = "textBoxNom";
             textBoxNom.Size = new Size(100, 23);
             textBoxNom.TabIndex = 1;
-            textBoxNom.Leave += textBoxNom_Leave;
             // 
             // labelprenom
             // 
@@ -82,7 +78,6 @@
             textBoxPrenom.Name = "textBoxPrenom";
             textBoxPrenom.Size = new Size(100, 23);
             textBoxPrenom.TabIndex = 3;
-            textBoxPrenom.Leave += textBoxPrenom_Leave;
             // 
             // labelDateDeNaissance
             // 
@@ -99,7 +94,6 @@
             textBoxDateDeNaissance.Name = "textBoxDateDeNaissance";
             textBoxDateDeNaissance.Size = new Size(100, 23);
             textBoxDateDeNaissance.TabIndex = 5;
-            textBoxDateDeNaissance.Leave += textBoxDateDeNaissance_Leave;
             // 
             // labelAdresse
             // 
@@ -116,7 +110,6 @@
             textBoxAdressePostal.Name = "textBoxAdressePostal";
             textBoxAdressePostal.Size = new Size(100, 23);
             textBoxAdressePostal.TabIndex = 7;
-            textBoxAdressePostal.Leave += textBoxAdressePostal_Leave;
             // 
             // labelCodePostal
             // 
@@ -133,7 +126,6 @@
             textBoxCodePostal.Name = "textBoxCodePostal";
             textBoxCodePostal.Size = new Size(100, 23);
             textBoxCodePostal.TabIndex = 9;
-            textBoxCodePostal.Leave += textBoxCodePostal_Leave;
             // 
             // labelTel
             // 
@@ -150,7 +142,6 @@
             textBoxTel.Name = "textBoxTel";
             textBoxTel.Size = new Size(100, 23);
             textBoxTel.TabIndex = 11;
-            textBoxTel.Leave += textBoxTel_Leave;
             // 
             // buttonValider
             // 
@@ -160,7 +151,6 @@
             buttonValider.TabIndex = 12;
             buttonValider.Text = "Valider";
             buttonValider.UseVisualStyleBackColor = true;
-            buttonValider.Click += buttonValider_Click;
             // 
             // buttonEffacer
             // 
@@ -170,7 +160,6 @@
             buttonEffacer.TabIndex = 13;
             buttonEffacer.Text = "Effacer";
             buttonEffacer.UseVisualStyleBackColor = true;
-            buttonEffacer.Click += buttonEffacer_Click;
             // 
             // labelFormatDate
             // 
@@ -196,11 +185,6 @@
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(100, 23);
             textBoxEmail.TabIndex = 16;
-            textBoxEmail.Leave += textBoxEmail_Leave;
-            // 
-            // errorProvider1
-            // 
-            errorProvider1.ContainerControl = this;
             // 
             // FormContact
             // 
@@ -228,7 +212,6 @@
             Name = "FormContact";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contact";
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -252,6 +235,5 @@
         private Label labelFormatDate;
         private Label labelEmail;
         private TextBox textBoxEmail;
-        private ErrorProvider errorProvider1;
     }
 }

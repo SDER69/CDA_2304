@@ -164,7 +164,7 @@ namespace WinFormsTransaction
         {
             Button btn = (Button)sender;
             if (btn != null)
-            {   
+            {
                 Effacer();
             }
         }

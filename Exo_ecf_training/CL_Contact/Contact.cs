@@ -50,7 +50,7 @@
                    "Date de naissance : " + this.dateDeNaissance.ToShortDateString() + "\n\r" +
                    "Adresse postal : " + this.adressePostal + "\n\r" +
                    "Email : " + this.adresseMail + "\n\r" +
-                   "Code postal : " + this.codePostal + "\n\r" +
+                   "Code postal : " + this.codePostal +
                    "Numéro de téléphone : " + this.numTel + "\n\r";
         }
 
