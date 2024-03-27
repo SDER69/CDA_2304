@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary2\CL_PersistanceSQLServer.csproj" />
+    <ProjectReference Include="..\CL_PDomainPersistance\CL_PDomainPersistance.csproj" />
+    <ProjectReference Include="..\CL_PersistanceMySQL\CL_PersistanceSQLServer.csproj" />
+  </ItemGroup>
+
+</Project>
