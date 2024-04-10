@@ -52,7 +52,7 @@ namespace CL_Domain
             }
             else
             {
-                throw new Exception("persistance non defini");
+                throw new Exception("persitance non defini");
             }
         }
 
